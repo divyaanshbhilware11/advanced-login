@@ -107,7 +107,7 @@ export default function ProfileUpdate() {
       <form onSubmit={handleSubmit}>
         <InputField
           type="text"
-          label="First Name"
+          label="First Names"
           name="first_name"
           value={formData.first_name}
           onChange={handleInputChange}
