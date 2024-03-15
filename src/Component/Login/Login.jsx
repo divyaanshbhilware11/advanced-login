@@ -44,8 +44,11 @@ export default function Login() {
       fetch(`${CONSTANTS.BASE_URL}/login`, { 
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
+        
+  
         body: JSON.stringify(signupData)
       })
       .then(async response => {
