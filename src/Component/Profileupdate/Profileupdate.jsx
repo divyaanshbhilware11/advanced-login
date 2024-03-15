@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InputField from '../../InputField';
 import '../../App.css';
+import CONSTANTS from '../../Constant/Constants';
 
 export default function ProfileUpdate() {
  
@@ -26,7 +27,7 @@ export default function ProfileUpdate() {
   const fetchData = async () => {
     try {
       let token = localStorage.getItem('token')
-      const response = await fetch(`http://192.168.193.63:8000/userData` ,{
+      const response = await fetch(`${CONSTANTS.BASE_URL}/userData` ,{
         method: 'GET',
                 headers: {
                     'Content-Type': 'application/json' ,
@@ -70,7 +71,7 @@ export default function ProfileUpdate() {
   const registerUser = async () => {
     try {
       let token = localStorage.getItem('token')
-      const response = await fetch('http://192.168.193.63:8000/update', {
+      const response = await fetch(`${CONSTANTS.BASE_URL}/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

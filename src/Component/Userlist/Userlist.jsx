@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Userlists.css';
 import { useNavigate } from 'react-router-dom';
+import CONSTANTS from '../../Constant/Constants';
 
 export default function Userlist() {
     const [userData, setUserData] = useState([]);
@@ -39,7 +40,7 @@ export default function Userlist() {
        
         try {
             let token = localStorage.getItem('token')
-            const response = await fetch('http://192.168.193.63:8000/userList', {
+            const response = await fetch(`${CONSTANTS.BASE_URL}/userList`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

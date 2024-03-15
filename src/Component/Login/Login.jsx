@@ -4,6 +4,7 @@ import '../../App.css' ;
 import { Link } from 'react-router-dom';
 const backendIP = import.meta.env.VITE_BACKEND_IP;
 import { useNavigate } from 'react-router-dom';
+import CONSTANTS from '../../Constant/Constants';
 
 
 export default function Login() {
@@ -40,7 +41,7 @@ export default function Login() {
      
      //yaha se 
 
-      fetch(`http://192.168.193.63:8000/login`, { 
+      fetch(`${CONSTANTS.BASE_URL}/login`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
