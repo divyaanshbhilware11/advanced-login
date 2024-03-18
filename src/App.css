@@ -5,6 +5,8 @@
   text-align: center;
   background-color: white;
   border-radius: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 form {
@@ -75,6 +77,18 @@ button[type='submit']:hover {
 /* Change border color when the password field is focused */
 #password:focus {
   border-color: #007bff;
+}
+
+/* Add this CSS to your stylesheet */
+.error {
+  color:red;
+  font-size: 0.8em;
+  margin-top: 3px;
+}
+
+.spaceup {
+margin-top: 30px;
+margin-bottom: 30px;
 }
 
 

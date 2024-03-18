@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css' ;
 
 const InputField = ({ type, label, name, value, onChange, error ,autoComplete }) => {
   return (
@@ -11,8 +12,10 @@ const InputField = ({ type, label, name, value, onChange, error ,autoComplete })
         value={value}
         onChange={onChange}
         autoComplete= {'off'}
+        style={{ borderColor: error ? 'red' : '' }} 
+
       />
-      {error && <span className="error">{error}</span>}
+      {error && <span className="error" >{error}</span>}
     </div>
   );
 };

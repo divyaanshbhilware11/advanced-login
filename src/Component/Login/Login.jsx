@@ -82,12 +82,12 @@ export default function Login() {
   const validateForm = (data) => {
     let errors = {};
     if (!data.email.trim()) {
-        errors.email = ' ***Email is required***';
+        errors.email = ' Email is required';
       } else if (!/^\S+@\S+\.\S+$/.test(data.email)) {
-        errors.email = '***Invalid email format***';
+        errors.email = 'Invalid email format';
       }
       if (!data.password.trim()) {
-        errors.password = '***Password is required***';
+        errors.password = 'Password is required';
       }    return errors;
     };
 

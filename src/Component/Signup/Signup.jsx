@@ -2,6 +2,7 @@ import React , { useState } from 'react'
 import InputField from '../../InputField';
 import '../../App.css' ;
 const backendIP = import.meta.env.VITE_BACKEND_IP;
+import CONSTANTS from '../../Constant/Constants';
 
 
 export default function Signup() {
@@ -49,7 +50,7 @@ export default function Signup() {
         };
 
         const registerUser = () => {
-          fetch('http://192.168.5.222:8000/signUp', {
+          fetch(`${CONSTANTS.BASE_URL}/signUp`, {
           method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -73,18 +74,18 @@ export default function Signup() {
         const validateForm = (data) => {
           let errors = {};
           if (!data.first_name.trim()) {
-            errors.first_name = '***First name is required***';
+            errors.first_name = 'First name is required';
           }
           if (!data.second_name.trim()) {
-            errors.second_name = '***Last name is required***';
+            errors.second_name = 'Last name is required';
           }
           if (!data.email.trim()) {
-            errors.email = ' ***Email is required***';
+            errors.email = ' Email is required';
           } else if (!/^\S+@\S+\.\S+$/.test(data.email)) {
-            errors.email = '***Invalid email format***';
+            errors.email = 'Invalid email format';
           }
           if (!data.dob) {
-            errors.dob = '***Date of birth is required***';
+            errors.dob = 'Date of birth is required';
           }
           if (!data.phone_number.trim()) {
             errors.phone_number = 'Mobile number is required';
@@ -92,13 +93,13 @@ export default function Signup() {
             errors.phone_number = 'Invalid mobile number';
           }
           if (!data.password.trim()) {
-            errors.password = '***Password is required***';
+            errors.password = 'Password is required';
           }    return errors;
         };
       
     return (
     
-    <div >
+    <div className='spaceup' >
       <h2>User Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -107,7 +108,9 @@ export default function Signup() {
           name="first_name"
           value={formData.first_name}
           onChange={handleInputChange}
+
           error={formErrors.first_name}
+
         />
         <InputField
           type="text"

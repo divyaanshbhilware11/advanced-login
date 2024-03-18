@@ -61,9 +61,9 @@ export default function Forgotpassword() {
   const validateForm = (data) => {
     let errors = {};
     if (!data.email.trim()) {
-        errors.email = ' ***Email is required***';
+        errors.email = ' Email is required';
       } else if (!/^\S+@\S+\.\S+$/.test(data.email)) {
-        errors.email = '***Invalid email format***';
+        errors.email = 'Invalid email format';
       }
           return errors;
     };
@@ -71,7 +71,7 @@ export default function Forgotpassword() {
 
   return (
  <>
-<div>
+<div >
 <h2>FORGOT PASSWORD </h2>
       <form onSubmit={handleSubmit}>
 

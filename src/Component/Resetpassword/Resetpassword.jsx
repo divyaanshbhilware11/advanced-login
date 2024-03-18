@@ -3,6 +3,7 @@ import React , { useState }  from 'react'
 import InputField from '../../InputField';
 import '../../App.css' ;
 import { useParams } from 'react-router-dom'; 
+import CONSTANTS from '../../Constant/Constants';
 
 
 export default function Resetpassword() {
@@ -13,8 +14,6 @@ export default function Resetpassword() {
         password: '',
     })
     const [formErrors, setFormErrors] = useState({});
-
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -36,7 +35,7 @@ export default function Resetpassword() {
 
         if (Object.keys(errors).length === 0) {
      
-          fetch(`http://192.168.5.222:8000/reset/${id}`, { 
+          fetch(`${CONSTANTS.BASE_URL}/reset/${id}`, { 
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -65,7 +64,7 @@ export default function Resetpassword() {
       const validateForm = (data) => {
         let errors = {};
         if (!data.password.trim()) {
-            errors.password = '***Password is required***';
+            errors.password = 'Password is required';
           }    return errors;
         };
        

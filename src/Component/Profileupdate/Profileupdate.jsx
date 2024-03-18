@@ -33,8 +33,7 @@ export default function ProfileUpdate() {
                     'Content-Type': 'application/json' ,
                     'Authorization': `Bearer ${token}` ,
                     'Access-Control-Allow-Origin': '*',
-                } ,
-                
+                } , 
       });
       if (!response.ok) {
         throw new Error('Failed to fetch data');
@@ -45,7 +44,6 @@ export default function ProfileUpdate() {
       console.error('Error fetching data:', error);
     }
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -58,7 +56,6 @@ export default function ProfileUpdate() {
       [name]: ''         // Clear the error message for the current input field
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateForm(formData);
@@ -68,7 +65,6 @@ export default function ProfileUpdate() {
       setFormErrors(errors);
     }
   };
-
   const registerUser = async () => {
     try {
       let token = localStorage.getItem('token')
@@ -85,16 +81,17 @@ export default function ProfileUpdate() {
         throw new Error('Failed to update data');
       }
     }
-    
     catch (error) {
       console.error('Error updating data:', error);
     }
   };
   
   const validateForm = (data) => {
+
     let errors = {};
 
     if (!/^\S+@\S+\.\S+$/.test(data.email)) {
+   
       errors.email = 'Invalid email format';
     }
     if (!/^\d{10}$/.test(data.phone_number)) {
@@ -105,12 +102,12 @@ export default function ProfileUpdate() {
  
 
   return (
-    <div >
+    <div className='' >
       <h2>Update Form</h2>
       <form onSubmit={handleSubmit}>
         <InputField
           type="text"
-          label="First Names"
+          label="First Name"
           name="first_name"
           value={formData.first_name}
           onChange={handleInputChange}
@@ -129,6 +126,8 @@ export default function ProfileUpdate() {
           value={formData.email}
           onChange={handleInputChange}
           error={formErrors.email}
+         // style={{ borderColor: formErrors.email ? 'red' : '' }}
+
         />
         <InputField
           type="text"
@@ -158,6 +157,7 @@ export default function ProfileUpdate() {
           value={formData.phone_number}
           onChange={handleInputChange}
           error={formErrors.phone_number}
+
         />
         <InputField
           type="password"
