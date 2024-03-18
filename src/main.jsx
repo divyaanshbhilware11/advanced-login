@@ -36,6 +36,7 @@ const router =  createBrowserRouter ([
         path: 'userdata',
         element : <Userlist />,
        },
+       
        {
         path: 'profileupdate',
         element : <Profileupdate />,
