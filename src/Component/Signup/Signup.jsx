@@ -3,9 +3,11 @@ import InputField from '../../InputField';
 import '../../App.css' ;
 const backendIP = import.meta.env.VITE_BACKEND_IP;
 import CONSTANTS from '../../Constant/Constants';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Signup() {
+  const navigate = useNavigate();
 
         const [formData, setFormData] = useState({
           first_name: '',
@@ -65,6 +67,8 @@ export default function Signup() {
           })
           .then(data => {
             console.log ('API Response:', data);
+
+            navigate('login')
           })
           .catch(error => {
             console.error('API Error:', error);
@@ -95,8 +99,6 @@ export default function Signup() {
           }else if (!/^[a-zA-Z]+$/.test(data.second_name)){
             errors.second_name = 'Invalid Last name'
           }}
-
-
 
           if (!data.email.trim()) {
             errors.email = ' Email is required';
