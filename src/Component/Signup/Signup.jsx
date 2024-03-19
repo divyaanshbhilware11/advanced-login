@@ -68,7 +68,7 @@ export default function Signup() {
           .then(data => {
             console.log ('API Response:', data);
 
-            navigate('login')
+            //navigate('login')
           })
           .catch(error => {
             console.error('API Error:', error);
