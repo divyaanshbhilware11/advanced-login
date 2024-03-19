@@ -138,8 +138,6 @@ export default function Signup() {
           }}
 
 
-
-
           if (!data.phone_number.trim()) {
             errors.phone_number = 'Mobile number is required';
           } else if (!/^\d{10}$/.test(data.phone_number)) {
@@ -170,7 +168,6 @@ export default function Signup() {
           name="first_name"
           value={formData.first_name}
           onChange={handleInputChange}
-
           error={formErrors.first_name}
 
         />
