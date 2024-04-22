@@ -8,6 +8,9 @@ import Forgotpassword from './Component/Forgotpassword/Forgotpassword.jsx'
 import Resetpassword from './Component/Resetpassword/Resetpassword.jsx'
 import Userlist from './Component/Userlist/Userlist.jsx'
 import Profileupdate from './Component/Profileupdate/Profileupdate.jsx'
+import { Provider } from 'react-redux'
+import Store from './Component/STORE/Store.js'
+
  
 
 const router =  createBrowserRouter ([
@@ -41,14 +44,14 @@ const router =  createBrowserRouter ([
         path: 'profileupdate',
         element : <Profileupdate />,
        },
-
+       
    ])
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <Provider store={Store} >
     <RouterProvider router = {router} />
-  </React.StrictMode>,
+  </Provider>,
 )
 
 

@@ -75,7 +75,6 @@ export default function Userlist() {
             <div>
                 <input type="text" value={query} onChange={handleSearch} placeholder="Search..." />
             </div>
-
             <br />
             
             <table border="1">

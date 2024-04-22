@@ -1,6 +1,7 @@
 import React , { useState }  from 'react'
 import InputField from '../../InputField';
 import '../../App.css' ;
+import CONSTANTS from '../../Constant/Constants';
 
 export default function Forgotpassword() {
 
@@ -32,7 +33,8 @@ export default function Forgotpassword() {
 
     if (Object.keys(errors).length === 0) {
 
-      fetch(`http://192.168.100.63:8000/forgotPassword`, { 
+
+      fetch(`${CONSTANTS.BASE_URL}/forgotPassword`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

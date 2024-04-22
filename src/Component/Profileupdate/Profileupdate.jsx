@@ -34,6 +34,7 @@ export default function ProfileUpdate() {
                     'Authorization': `Bearer ${token}` ,
                     'Access-Control-Allow-Origin': '*',
                 } , 
+                
       });
       if (!response.ok) {
         throw new Error('Failed to fetch data');
@@ -65,6 +66,10 @@ export default function ProfileUpdate() {
       setFormErrors(errors);
     }
   };
+
+
+
+
   const registerUser = async () => {
     try {
       let token = localStorage.getItem('token')
@@ -149,28 +154,16 @@ export default function ProfileUpdate() {
       errors.address = 'Address is required';
     }}
 
-
-
-
-    if (!data.phone_number.trim()) {
-      errors.phone_number = 'Mobile number is required';
-    } else if (!/^\d{10}$/.test(data.phone_number)) {
+     if (!/^\d{10}$/.test(data.phone_number)) {
       errors.phone_number = 'Invalid mobile number';
     }
-    
-    if (!data.password.trim()) {
-      errors.password = 'Password is required';
-    } else if (data.password.length < 8) {
-      errors.password = 'Password must be at least 8 characters long';
-    } else if (!/\d/.test(data.password)) {
-      errors.password = 'Password must contain at least one digit';
-    } else if (!/[a-zA-Z]/.test(data.password)) {
-      errors.password = 'Password must contain at least one letter';
-    }
+   
+  
     
     return errors;
   };
 
+  
  
   return (
     <div className='spaceup' >
@@ -240,15 +233,7 @@ export default function ProfileUpdate() {
           error={formErrors.phone_number}
 
         />
-        <InputField
-          type="password"
-          label="Password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          error={formErrors.password}
-
-        />
+      
         <div>
           <label htmlFor="status">Status:</label>
           <select id="status" name="status" value={formData.status} onChange={handleInputChange}>
@@ -259,6 +244,7 @@ export default function ProfileUpdate() {
         <div>
           <button type="submit">UPDATE</button>
         </div>
+
       </form>
     </div>
   );

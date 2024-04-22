@@ -4,39 +4,22 @@ import '../../App.css' ;
 const backendIP = import.meta.env.VITE_BACKEND_IP;
 import CONSTANTS from '../../Constant/Constants';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFormData, setFormErrors, clearFormErrors, clearFormData, selectFormData, selectFormErrors } from '../SLICE/Slice';//./SLICE//Slice/userRegistrationSlice
 
 
 export default function Signup() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();``
+  const formData = useSelector(selectFormData);
+  const formErrors = useSelector(selectFormErrors);
 
-        const [formData, setFormData] = useState({
-          first_name: '',
-          second_name: '',
-          email: '',
-          dob: '',
-          city: '',
-          country: '',
-          address: '',
-          phone_number: '',
-          password: '',
-          status: 'active'
-        });
-      
-        const [formErrors, setFormErrors] = useState({});
     
         const handleInputChange = (e) => {
           const { name, value } = e.target;
          
-          setFormData({          //usko formdata me bhi update karte jaata he 
-            ...formData,
-            [name]: value
-          });
-          setFormErrors({
-            ...formErrors,
-            [name]: '' // Clear the error message for the current input field
-      
-          });
-
+        dispatch(setFormData({ [name]:value })) ;
+        dispatch(setFormErrors({ [name]: ''})) ;
         };
       
         const handleSubmit = (e) => {
@@ -47,7 +30,7 @@ export default function Signup() {
           if (Object.keys(errors).length === 0) {
             registerUser()
           } else {
-            setFormErrors(errors);
+            dispatch(setFormErrors(errors));
           }
         };
 
@@ -67,6 +50,8 @@ export default function Signup() {
           })
           .then(data => {
             console.log ('API Response:', data);
+            dispatch(clearFormData());
+            dispatch(clearFormErrors()); // Clear any existing form validation errors
 
             navigate('/')
           })
